@@ -1,0 +1,40 @@
+.form-container {
+    padding: 20px;
+    width: 75%;
+}
+
+.mat-form-field {
+    width: 100%;
+  }
+
+.button-container {
+    margin: 10px 0 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    width: 40%;
+    padding: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  button {
+    margin-right: 30px;
+  }
+
+  .spacer {
+    flex-grow: 1;
+  }
+
+  .form-status {
+    margin-top: 20px;
+  }
+  
+  .form-misc {
+    margin-bottom: 0;
+  }

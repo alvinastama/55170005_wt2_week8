@@ -1,0 +1,116 @@
+<div class="form-container" [formGroup]="matkulForm">
+
+        <h1>Form Mata Kuliah</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Mata Kuliah</mat-label>
+            <input 
+                type="text" 
+                matInput 
+                placeholder="Masukan Mata Kuliah"
+                formControlName="namamatkul" 
+            />
+            <mat-error *ngIf="namamatkul.invalid && namamatkul.touched">
+                Nama Mata Kuliah harus diisi dan tidak boleh kosong
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Semester</mat-label>
+            <mat-select formControlName="semester">
+                <mat-option value="Ganjil">Ganjil</mat-option>
+                <mat-option value="Genap">Genap</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br />
+        <mat-form-field appearance="outline">
+            <mat-label>Hari</mat-label>
+            <input 
+                type="text" 
+                matInput 
+                placeholder="Masukan Hari dan Jam Kuliah"
+                formControlName="hari"/>
+                <mat-error *ngIf="hari.invalid && hari.touched">
+                    Hari Perkuliahan harus diisi dan tidak boleh kosong
+                </mat-error>
+        </mat-form-field>
+        
+        <br />
+        <mat-form-field appearance="outline">
+            <mat-label>Nama Dosen</mat-label>
+            <input 
+                type="text"
+                matInput 
+                placeholder="Masukan Nama Dosen" 
+                formControlName="dosen"
+            />
+            <mat-error *ngIf="dosen.invalid && dosen.touched">
+                Nama Dosen harus diisi dan tidak boleh kosong
+            </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <mat-label>Tahun Ajaran</mat-label>
+            <mat-select formControlName="tahun">
+                <mat-option value="2020/2021">
+                    2020/2021
+                </mat-option>
+                <mat-option value="2021/2022">
+                    2021/2022
+                </mat-option>
+                <mat-option value="2022/2023">
+                    2022/2023
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br/>
+        <mat-checkbox formControlName="check">{{
+            update
+            ? "I want to update this matkul"
+            : "I agree to the terms and conditions"
+        }}</mat-checkbox>
+        <div class="button-container">
+            <button
+            type="submit"
+            mat-raised-button
+            color="warn"
+            *ngIf="update"
+            (click)="deleteMatkul()"
+            >
+            Delete
+            </button>
+            <span class="spacer"></span>
+            <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="matkulForm.invalid"
+            *ngIf="!update"
+            (click)="addMatkul()"
+            >
+            Add User
+            </button>
+            <button
+            type="submit"
+            mat-raised-button
+            color="accent"
+            [disabled]="matkulForm.invalid"
+            *ngIf="update"
+            (click)="updateMatkul()"
+            >
+            Update
+            </button>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="form-status">
+            <h3 class="form-misc">Form value</h3>
+            {{ matkulForm.value | json }}
+            <br />
+            <h3 class="form-misc">Form state</h3>
+            Valid: {{ matkulForm.valid }} <br />
+            Invalid: {{ matkulForm.invalid }} <br />
+            Dirty: {{ matkulForm.dirty }} <br />
+            Pristine: {{ matkulForm.pristine }} <br />
+            Touched: {{ matkulForm.touched }} <br />
+            Untouched: {{ matkulForm.untouched }}
+        </div>
+</div>
